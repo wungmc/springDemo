@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+    <meta charset="UTF-8">
+    <title>info</title>
+    <script>
+        $(document).ready(function(){
+            console.log("ready...");
+            $.ajax({
+                url: "http://localhost:8080/springDemo/v/user/info",
+                type: "post",
+                dataType: "jsonp",
+                //crossDomain:true,
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                jsonp: "jsonpcallback",
+                success: function (json) {
+                    if (json.result == "true") {
+                        $("#username").html(json.user.loginName);
+                        $("#age").html(json.user.age);
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    username:<span id="username"></span></br>
+    age:<span id="age"></span>
+</body>
+</html>

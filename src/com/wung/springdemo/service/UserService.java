@@ -11,8 +11,12 @@ public class UserService {
 	@Autowired
 	private UserDAO userDAO;
 	
+	public int login(String loginName, String password) {
+		return userDAO.login(loginName, password);
+	}
+
 	public UserBean queryUser(String loginName) {
 		return userDAO.queryUser(loginName);
 	}
-	
+
 }

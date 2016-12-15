@@ -20,6 +20,18 @@ public class UserDAO {
 	@Autowired
 	public JdbcTemplate jdbcTemplate_mysql;
 
+    public int login(String loginName, String password) {
+        log.info("login : " + loginName);
+
+        String sql = "SELECT 1 from t_login t where t.loginname = ? and t.password = ?";
+        try {
+             return jdbcTemplate_mysql.queryForInt(sql, loginName, password);
+        } catch (Exception e) {
+            log.error("login exception : " + e.getMessage());
+            return 0;
+        }
+    }
+
 	public UserBean queryUser(final String loginName) {
 		log.info("queryUser() : " + loginName);
 		
