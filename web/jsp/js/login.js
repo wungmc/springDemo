@@ -41,3 +41,19 @@ function login() {
         }
     });
 }
+
+function logout() {
+    $.ajax({
+        url : "http://localhost:8080/springDemo/logout",
+        type : "post",
+		data : {
+			logoutRequest:"true"
+		},
+        dataType : "jsonp",
+        jsonp : "jsonpcallback",
+        success : function(json) {
+            console.log("退出登录..");
+            window.location.href = "login.jsp";
+        }
+    });
+}

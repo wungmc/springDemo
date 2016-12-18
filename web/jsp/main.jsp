@@ -8,10 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<head>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
     <title>main</title>
 </head>
 <body>
     Welcome! ${user.loginName}, You are ${user.age} years old.
+    </br>
+    <input type="button" onclick="logout()" value="Log out"/>
 </body>
 </html>

@@ -44,6 +44,15 @@
         <url-pattern>/nv/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>com.wung.springdemo.controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
