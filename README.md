@@ -26,3 +26,5 @@ copy resource/applicationContext.xml & resource/log4j.properties to WEB-INF/clas
 4、Servlet
 
 5、jQuery and AJAX
+
+6、jstl
