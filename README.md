@@ -24,3 +24,5 @@ copy resource/applicationContext.xml & resource/log4j.properties to WEB-INF/clas
 3、Annotation
 
 4、Servlet
+
+5、jQuery and AJAX
