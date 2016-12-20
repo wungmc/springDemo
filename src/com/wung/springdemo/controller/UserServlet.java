@@ -2,6 +2,7 @@ package com.wung.springdemo.controller;
 
 import com.wung.springdemo.service.UserService2;
 import com.wung.springdemo.util.JSONService;
+import com.wung.springdemo.util.SpringContextUtil;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.web.context.WebApplicationContext;
@@ -37,6 +38,9 @@ public class UserServlet extends HttpServlet {
         WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(cfg.getServletContext());
         //必须在 Spring 的配置文件中定义一个名字为 userService2 的 UserService2
         userService2 = (UserService2) context.getBean("userService2");
+
+        //用 SpringContextUtil 类，作用和上面的两句相同
+        //userService2 = (UserService2) SpringContextUtil.getBean("userService2");
     }
 
     @Override
