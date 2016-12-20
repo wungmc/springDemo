@@ -27,6 +27,8 @@
         </property>
     </bean>
 
+    <bean class="com.wung.springdemo.service.UserService2" id="userService2"></bean>
+
     <!-- 声明使用注解式事务 -->
     <!--<tx:annotation-driven transaction-manager="transactionManagerWeb"/>-->
 
