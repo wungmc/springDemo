@@ -11,7 +11,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * 登出的功能
  *
- * 不使用 SpringMVC 的注解方式，而是使用 Servlet 的例子
+ * Servlet 的例子（里面不需要注入的时候）
  * 这种需要在 web.xml 中配置 Servlet 及其映射。
  *
  * Created by wung on 2016/12/18.
