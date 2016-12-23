@@ -57,3 +57,42 @@ function logout() {
         }
     });
 }
+
+function saveUser() {
+    var userName = $("input[name=username]").val().replace(/^\s*/, "").replace(/\s*$/, "");
+    var age = $("input[name=age]").val().replace(/^\s*/, "").replace(/\s*$/, "");
+    console.log(userName);
+    console.log(age);
+    if (userName == "") {
+        $("#errorInfo").html("username is null!");
+        return;
+    }
+    if (age == "") {
+        $("#errorInfo").html("age is null!");
+        return;
+    }
+
+    $.ajax({
+        url: "http://localhost:8080/springDemo/nv/user/saveuser",
+        type: "post",
+        dataType: "jsonp",
+        //crossDomain:true,
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        jsonp: "jsonpcallback",
+        data : {
+            userName: userName,
+            age: age
+        },
+        success: function (json) {
+            if (json.result) {
+                $("#errorInfo").html("Save success.")
+            }
+            else {
+                $("#errorInfo").html("Save fail.")
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log(status);
+        }
+    });
+}

@@ -1,6 +1,7 @@
 package com.wung.springdemo.controller;
 
 import com.wung.springdemo.bean.UserBean;
+import com.wung.springdemo.dao.UserDAO;
 import com.wung.springdemo.service.UserService;
 import com.wung.springdemo.util.JSONService;
 import net.sf.json.JSONObject;
@@ -74,6 +75,23 @@ public class UserController {
         obj.put("user", user);
         JSONService.writeStringIntoResponse(response, jsonp + "(" + obj + ")");
 
+    }
+
+    @RequestMapping(value = "/saveuser")
+    public void saveUser(HttpServletRequest request, HttpServletResponse response) {
+        log.info("saveUser:");
+        String jsonp = request.getParameter("jsonpcallback");
+        JSONObject obj = new JSONObject();
+
+        String userName = request.getParameter("userName");
+        String age = request.getParameter("age");
+        UserBean user = new UserBean();
+        user.setLoginName(userName);
+        user.setAge(Integer.parseInt(age));
+        boolean result = userService.saveUser(user);
+
+        obj.put("result", result);
+        JSONService.writeStringIntoResponse(response, jsonp + "(" + obj + ")");
     }
     
 }

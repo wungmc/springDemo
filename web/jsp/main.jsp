@@ -16,5 +16,10 @@
     Welcome! ${user.loginName}, You are ${user.age} years old.
     </br>
     <input type="button" onclick="logout()" value="Log out"/>
+    </br></br>
+    <span id="errorInfo" style="color: red;"></span></br>
+    Username:<input type="text" name="username"/>
+    Age:<input type="text" name="age"/></br>
+    <input type="button" onclick="saveUser()" value="Save"/>
 </body>
 </html>

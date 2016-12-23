@@ -62,14 +62,9 @@ public class UserDAO {
 	 * @return
 	 */
 	public boolean saveUser(UserBean user) {
-		try {
-			String sql = "insert into t_user (loginname, age) values (?, ?) ";
-			int count = jdbcTemplate_mysql.update(sql, user.getLoginName(), user.getAge());
-			return count > 0;
-		} catch (Exception e) {
-			log.error("exception :" + e.getMessage());
-			return false;
-		}
+        String sql = "insert into t_user (loginname, age) values (?, ?) ";
+        int count = jdbcTemplate_mysql.update(sql, user.getLoginName(), user.getAge());
+        return count > 0;
 	}
 	
 	/**
