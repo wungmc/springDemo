@@ -20,6 +20,9 @@ public class UserDAO {
 	@Autowired
 	public JdbcTemplate jdbcTemplate_mysql;
 
+    @Autowired
+    public JdbcTemplate jdbcTemplate_oracle;
+
     public int login(String loginName, String password) {
         log.info("login : " + loginName);
 
@@ -66,6 +69,12 @@ public class UserDAO {
         int count = jdbcTemplate_mysql.update(sql, user.getLoginName(), user.getAge());
         return count > 0;
 	}
+
+    public boolean testOracleTx(UserBean user) {
+        String sql = "insert into online_7days_user_test(str1, num1) values (?, ?)";
+        int count = jdbcTemplate_oracle.update(sql, user.getLoginName(), user.getAge());
+        return count > 0;
+    }
 	
 	/**
 	 * 更新用户表

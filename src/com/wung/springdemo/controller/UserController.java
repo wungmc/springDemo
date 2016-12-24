@@ -88,7 +88,12 @@ public class UserController {
         UserBean user = new UserBean();
         user.setLoginName(userName);
         user.setAge(Integer.parseInt(age));
-        boolean result = userService.saveUser(user);
+        boolean result = false;
+        try {
+            result = userService.saveUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         obj.put("result", result);
         JSONService.writeStringIntoResponse(response, jsonp + "(" + obj + ")");

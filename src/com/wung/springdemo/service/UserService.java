@@ -5,6 +5,7 @@ import com.wung.springdemo.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -15,21 +16,27 @@ public class UserService {
 	
 	public int login(String loginName, String password) {
 		return userDAO.login(loginName, password);
-	}
+}
 
 	public UserBean queryUser(String loginName) {
 		return userDAO.queryUser(loginName);
 	}
 
     /**
-     * 给该方法加上事务管理，当遇到异常时回滚
+     * 给该方法加上事务管理，当遇到异常时回滚。
+     * 问题：在 mysql 上始终不起作用，用的 MySQL Community Server，引擎是 InnoDB。
+     *
      * @param user
      * @return
      */
-    @Transactional(rollbackFor = Exception.class)
+
+    @Transactional(propagation = Propagation.REQUIRED)
     @Qualifier("mysqlTx")
     public boolean saveUser(UserBean user) {
-        return userDAO.saveUser(user);
+//        boolean b1 = userDAO.saveUser(user); // mysql 不起作用
+        boolean b1 = userDAO.testOracleTx(user);
+        throw new UnsupportedOperationException();
+//        return b1;
     }
 
 }
