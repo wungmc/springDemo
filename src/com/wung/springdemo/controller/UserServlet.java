@@ -68,7 +68,11 @@ public class UserServlet extends HttpServlet {
         JSONObject obj = new JSONObject();
 
         //业务逻辑
-        //userService2.insert();
+        try {
+            userService2.insert();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println(userService2);
 
         obj.put("result", "true");

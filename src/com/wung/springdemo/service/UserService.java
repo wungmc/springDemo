@@ -33,10 +33,10 @@ public class UserService {
     @Transactional(propagation = Propagation.REQUIRED)
     @Qualifier("mysqlTx")
     public boolean saveUser(UserBean user) {
-//        boolean b1 = userDAO.saveUser(user); // mysql 不起作用
-        boolean b1 = userDAO.testOracleTx(user);
-        throw new UnsupportedOperationException();
-//        return b1;
+        boolean b1 = userDAO.saveUser(user);
+//        boolean b1 = userDAO.testOracleTx(user);
+//        throw new UnsupportedOperationException();
+        return b1;
     }
 
 }
